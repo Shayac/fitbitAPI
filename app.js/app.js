@@ -10,19 +10,15 @@ async function getDataFromFitbit(){
   return myData;
 }
 
-getDataFromFitbit();
+//getDataFromFitbit();
 
-/*
 
-app.get('/fitbitData', function (req, res) {
-	request.get("https://www.bhphotovideo.com/c/json/search/?N=0&InitialSearch=yes&sts=ma&Top+Nav-Search&Ntt=sony%20alpha%20a7%20iii%2024", function(error, response, body){
-		res.json(body);
-	}
- 	})
-*/
-					
-/*
+
+app.get('/fitbitData', async function (req, res) {
+	const data = await getDataFromFitbit();
+	res.json(data);
+		})
+
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 	});
-*/
