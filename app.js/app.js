@@ -14,10 +14,12 @@ async function getDataFromFitbit(){
 
 
 
-app.get('/fitbitData', async function (req, res) {
-	const data = await getDataFromFitbit();
-	res.json(data);
-		})
+app.get('/', function(req, res) {
+	getDataFromFitbit().then(function(data){
+		res.json(data);
+	});
+});
+
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
