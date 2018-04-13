@@ -4,9 +4,6 @@ const request = require('request')
 
 
 
-//getDataFromFitbit();
-
-
 app.get('/', function(req, res) {
   res.send(`
    <!DOCTYPE html>
@@ -34,15 +31,25 @@ app.get('/time', function(req, res) {
 
 <p>this is the current time: </p>
 
+<p id="dateTime"></p>
+
+<script>
+var d = new Date()
+var time = (d.toLocaleTimeString())
+var date = (d.toDateString())
+
+
+document.getElementById("dateTime").innerHTML = "<p>Current date is " + date + " and the time right now is " + time + "  </p>"
+</script>
+
+
 </body>
 </html>
       
   `);
 });
 
-var d = new Date()
-var time = (d.toLocaleTimeString())
-var date = (d.toDateString())
+
 
 //console.log('current time' + time)
 //console.log(d.toDateString())
