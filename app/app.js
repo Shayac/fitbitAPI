@@ -1,14 +1,8 @@
 const express = require('express')
 const app = express()
 const request = require('request')
-const axios = require('axios')
-const date = require('date')
 
-async function getDataFromFitbit(){
-  const myData = await axios.get('https://www.bhphotovideo.com/bnh/controller/home?A=getItemDetail&Q=json&O=&sku=1394217&is=REG&show=mainInfo+images+itemGrouping+qa+breadcrumbs');
-  console.log(myData);
-  return myData.data;
-}
+
 
 //getDataFromFitbit();
 
@@ -38,13 +32,20 @@ app.get('/time', function(req, res) {
 
 <h1>Welcome to time page</h1>
 
-<p>current time goes here</p>
+<p>this is the current time: </p>
 
 </body>
 </html>
       
   `);
 });
+
+var d = new Date()
+var time = (d.toLocaleTimeString())
+var date = (d.toDateString())
+
+//console.log('current time' + time)
+//console.log(d.toDateString())
 
 
 
