@@ -12,7 +12,8 @@ app.get('/', function(req, res) {
 
 <h1>Welcome</h1>
 
-<p>click <a href="/time">here</a> for time</p>
+
+<button type=button><a href="/time">Click here for time</a></button>
 
 </body>
 </html>
