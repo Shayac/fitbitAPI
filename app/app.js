@@ -5,9 +5,9 @@ const request = require('request')
 
 
 const axios = require('axios')
-var d = new Date()
-var time = (d.toLocaleTimeString())
-var date = (d.toDateString())
+d = new Date()
+time = (d.toLocaleTimeString())
+date = (d.toDateString())
 
 console.log("this is server date " + date +" "+ time)
 
@@ -41,26 +41,15 @@ app.get('/', function(req, res) {
 });
 
 
-/*app.get('/time', function(req, res) {
+app.get('/time', function(req, res) {
   res.send(`
    <!DOCTYPE html>
 <html>
 <body>
 
-<h1>Welcome to time page</h1>
+<h1>Welcome to time page!</h1>
 
-<p>this is the current time: </p>
-
-<p id="dateTime"></p>
-
-<script>
-var d = new Date()
-var time = (d.toLocaleTimeString())
-var date = (d.toDateString())
-
-
-document.getElementById("dateTime").innerHTML = "<p>Current date is " + date + " and the time right now is " + time + "  </p>"
-</script>
+<p>this is the current date ${date} and this is the time now: ${time}:  </p>
 
 
 </body>
@@ -68,6 +57,18 @@ document.getElementById("dateTime").innerHTML = "<p>Current date is " + date + "
       
   `);
 });
+
+/*
+<p id="dateTime"></p>
+
+<script>
+var d = new Date()
+var time = (d.toLocaleTimeString())
+var date = (d.toDateString())
+
+document.getElementById("dateTime").innerHTML = "<p>Current date is " + date + " and the time right now is " + time + "  </p>"
+</script>
+
 */ 
 
 
