@@ -4,6 +4,25 @@ const request = require('request')
 
 
 
+const axios = require('axios')
+var d = new Date()
+var time = (d.toLocaleTimeString())
+var date = (d.toDateString())
+
+console.log("this is server date " + date +" "+ time)
+
+
+
+
+
+
+async function getDataFromOpenWeather(){
+  const myData = await axios.get('http://api.openweathermap.org/data/2.5/weather?lat=40.1168431&lon=-74.257079&appid=14a600c9647935884d79f12bb5cccd9a&units=imperial');
+  //console.log(myData);
+  return myData;
+}
+getDataFromOpenWeather()
+
 app.get('/', function(req, res) {
   res.send(`
    <!DOCTYPE html>
@@ -22,7 +41,7 @@ app.get('/', function(req, res) {
 });
 
 
-app.get('/time', function(req, res) {
+/*app.get('/time', function(req, res) {
   res.send(`
    <!DOCTYPE html>
 <html>
@@ -49,7 +68,7 @@ document.getElementById("dateTime").innerHTML = "<p>Current date is " + date + "
       
   `);
 });
-
+*/ 
 
 
 //console.log('current time' + time)
