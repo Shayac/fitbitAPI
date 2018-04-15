@@ -24,6 +24,13 @@ async function getDataFromOpenWeather(){
 getDataFromOpenWeather()
 
 app.get('/', function(req, res) {
+  
+d = new Date()
+time = (d.toLocaleTimeString())
+date = (d.toDateString())
+
+console.log("this is server date " + date +" "+ time)
+
   res.send(`
    <!DOCTYPE html>
 <html>
