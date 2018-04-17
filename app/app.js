@@ -1,15 +1,14 @@
 const express = require('express')
 const app = express()
 const request = require('request')
-
-
-
 const axios = require('axios')
-d = new Date()
-time = (d.toLocaleTimeString())
-date = (d.toDateString())
 
-console.log("this is server date " + date +" "+ time)
+
+//d = new Date()
+//time = (d.toLocaleTimeString())
+//date = (d.toDateString())
+
+//console.log("this is server date " + date +" "+ time)
 
 
 
@@ -19,17 +18,22 @@ console.log("this is server date " + date +" "+ time)
 async function getDataFromOpenWeather(){
   const myData = await axios.get('http://api.openweathermap.org/data/2.5/weather?lat=40.1168431&lon=-74.257079&appid=14a600c9647935884d79f12bb5cccd9a&units=imperial');
   //console.log(myData);
-  return myData;
+  //return myData;
+  //var parsed = JSON.parse(myData);
+  //hero = myData['coord'][1];
+  console.log(myData.weather[1].id)
+  //console.log(JSON.parse(myData)
+  //console.log(myData.main)
+
 }
+
+
 getDataFromOpenWeather()
 
-app.get('/', function(req, res) {
-  
-d = new Date()
-time = (d.toLocaleTimeString())
-date = (d.toDateString())
 
-console.log("this is server date " + date +" "+ time)
+
+app.get('/', function(req, res) {
+
 
   res.send(`
    <!DOCTYPE html>
@@ -49,6 +53,15 @@ console.log("this is server date " + date +" "+ time)
 
 
 app.get('/time', function(req, res) {
+
+  
+d = new Date()
+time = (d.toLocaleTimeString())
+date = (d.toDateString())
+
+console.log("this is server date " + date +" "+ time)
+
+
   res.send(`
    <!DOCTYPE html>
 <html>
