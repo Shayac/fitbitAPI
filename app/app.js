@@ -68,9 +68,22 @@ console.log("this is server date " + date +" "+ time)
 
 app.get('/weather', function(req, res) {
 
+	async function getDataFromOpenWeather(){
+	try {
+		const {data: {main: {temp}}} = await axios.get('http://api.openweathermap.org/data/2.5/weather?lat=40.1168431&lon=-74.257079&appid=14a600c9647935884d79f12bb5cccd9a&units=imperial');
+		console.log(temp);
+		return temp
+		}
+	catch (error) {
+		console.log(error);
+	}
+};
 
-  res.send(`
-   <!DOCTYPE html>
+
+getDataFromOpenWeather();
+
+	res.send(`
+	<!DOCTYPE html>
 <html>
 <body>
 
@@ -82,7 +95,7 @@ app.get('/weather', function(req, res) {
 </body>
 </html>
       
-  `);
+	`);
 });
 
 
