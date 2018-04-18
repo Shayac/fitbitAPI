@@ -4,36 +4,23 @@ const request = require('request')
 const axios = require('axios')
 
 
-//d = new Date()
-//time = (d.toLocaleTimeString())
-//date = (d.toDateString())
-
-//console.log("this is server date " + date +" "+ time)
-
-
-
-
-
-
 async function getDataFromOpenWeather(){
-  const myData = await axios.get('http://api.openweathermap.org/data/2.5/weather?lat=40.1168431&lon=-74.257079&appid=14a600c9647935884d79f12bb5cccd9a&units=imperial');
-  //console.log(myData);
-  //return myData;
-  //var parsed = JSON.parse(myData);
-  //hero = myData['coord'][1];
-  console.log(myData.weather[1].id)
-  //console.log(JSON.parse(myData)
-  //console.log(myData.main)
+	try {
+		const {data: {main: {temp}}} = await axios.get('http://api.openweathermap.org/data/2.5/weather?lat=40.1168431&lon=-74.257079&appid=14a600c9647935884d79f12bb5cccd9a&units=imperial');
+		console.log(temp);
+		return temp
+		}
+	catch (error) {
+		console.log(error);
+	}
+};
 
-}
 
-
-getDataFromOpenWeather()
+getDataFromOpenWeather();
 
 
 
 app.get('/', function(req, res) {
-
 
   res.send(`
    <!DOCTYPE html>
@@ -44,7 +31,7 @@ app.get('/', function(req, res) {
 
 
 <button type=button><a href="/time">Click here for time</a></button>
-//
+
 </body>
 </html>
       
@@ -78,6 +65,31 @@ console.log("this is server date " + date +" "+ time)
   `);
 });
 
+
+app.get('/weather', function(req, res) {
+
+
+  res.send(`
+   <!DOCTYPE html>
+<html>
+<body>
+
+<h1>Welcome to the weather page!</h1>
+
+<p>This is the current weather in Lakewood: ${temp} </p>
+
+
+</body>
+</html>
+      
+  `);
+});
+
+
+
+
+
+
 /*
 <p id="dateTime"></p>
 
@@ -94,9 +106,7 @@ document.getElementById("dateTime").innerHTML = "<p>Current date is " + date + "
 
 //console.log('current time' + time)
 //console.log(d.toDateString())
-
-
-
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
+	console.log('Example app listening on port 3000!');
 	});
+
